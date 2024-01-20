@@ -1,8 +1,11 @@
-import googlemaps, spacy
+import googlemaps, os, spacy
 from data import CATEGORIES, EXACT_CATEGORIES
 from googlemaps import places
+from dotenv import load_dotenv
 
-gmaps = googlemaps.Client(key="")
+load_dotenv()
+
+gmaps = googlemaps.Client(key=os.getenv("GOOGLE_CLOUD_TOKEN"))
 nlp = spacy.load('en_core_web_md')
 
 test_loc = (1.2949111110307086, 103.77368865180391)
@@ -18,7 +21,7 @@ def get_nearby_places(location, type, limit):
         output += "({0}) {1}\n".format(str(i + 1), result[i]["name"])
         output += "Address: {0}\n".format(result[i]["vicinity"])
         output += "Distance: {0}, Travelling Time: {1}\n\n".format(dist_time[0]["elements"][i]["distance"]["text"], dist_time[0]["elements"][i]["duration"]["text"])
-    print(output)
+    return output
     
 
 def get_distance_time(origin, location_info, limit):
@@ -53,3 +56,4 @@ def parse_category_input(input):
 #     category = input("Type: \n")
 #     correct = parse_category_input(category)
 #     get_nearby_places(test_loc, correct, LIMIT)
+#     parse_category_input("food")
