@@ -1,0 +1,5 @@
+steps:
+  - name: Set up env variables
+    env:
+      GOOGLE_CLOUD_TOKEN: ${{ secrets.GOOGLE_CLOUD_TOKEN }}
+      TELEGRAM: ${{ secrets.TELEGRAM_TOKEN }}

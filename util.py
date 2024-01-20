@@ -1,8 +1,8 @@
-import googlemaps, spacy
+import googlemaps, os, spacy
 from data import CATEGORIES, EXACT_CATEGORIES
 from googlemaps import places
 
-gmaps = googlemaps.Client(key="")
+gmaps = googlemaps.Client(key=os.getenv("GOOGLE_CLOUD_TOKEN"))
 nlp = spacy.load('en_core_web_md')
 
 test_loc = (1.2949111110307086, 103.77368865180391)
