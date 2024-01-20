@@ -1,5 +1,8 @@
 steps:
   - name: Set up env variables
-    env:
-      GOOGLE_CLOUD_TOKEN: ${{ secrets.GOOGLE_CLOUD_TOKEN }}
-      TELEGRAM: ${{ secrets.TELEGRAM_TOKEN }}
+    # env:
+    #   GOOGLE_CLOUD_TOKEN: ${{ secrets.GOOGLE_CLOUD_TOKEN }}
+    #   TELEGRAM: ${{ secrets.TELEGRAM_TOKEN }}
+    run: |
+        echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" >> $GITHUB_ENV
+        echo "GOOGLE_CLOUD_API_KEY=${{ secrets.GOOGLE_CLOUD_API_KEY }}" >> $GITHUB_ENV
